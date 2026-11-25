@@ -244,17 +244,13 @@ npm run dev        # opens on http://localhost:5173
 
 The Django backend must be running on `http://127.0.0.1:8000`. For a deployed backend, set `VITE_API_BASE_URL` in a `.env` file (see `.env.example`).
 
-To preview the production build through Tailscale Funnel at `/smarttravel/`, use that absolute base path so assets also load when a nested route is opened directly or refreshed:
+For a standard deployment at the domain root, build the frontend with the default base path:
 
 ```bash
-VITE_BASE_PATH=/smarttravel/ \
-VITE_ROUTER_BASENAME=/smarttravel \
 npm run build
-VITE_ALLOWED_HOSTS=your-device.your-tailnet.ts.net \
-npm run preview -- --host 127.0.0.1 --port 4173
 ```
 
-Replace the example hostname with your device's Tailscale DNS name. Configure Funnel to proxy `/smarttravel` to port `4173`.
+If your deployment serves the app under a URL prefix, set `VITE_BASE_PATH` and `VITE_ROUTER_BASENAME` to that prefix when building. Leave both unset for a domain-root deployment.
 
 ## 14. Conclusion
 
