@@ -96,7 +96,7 @@ frontend/
     ├── components/
     │   ├── auth/           # login & register forms and layout
     │   ├── layout/         # header, mobile tab bar, route guards
-    │   ├── trips/          # trip form, transport, stays, flights, hotels, planner
+    │   ├── trips/          # trip form, transport, accommodation, flights, hotels, planner
     │   ├── destinations/   # discover destination form, place helpers
     │   └── ui/             # shared: Button, Modal, Combobox, Photo…
     ├── constants/          # dropdown choices, airport codes
@@ -243,6 +243,18 @@ npm run dev        # opens on http://localhost:5173
 ```
 
 The Django backend must be running on `http://127.0.0.1:8000`. For a deployed backend, set `VITE_API_BASE_URL` in a `.env` file (see `.env.example`).
+
+To preview the production build through Tailscale Funnel at `/smarttravel/`, use that absolute base path so assets also load when a nested route is opened directly or refreshed:
+
+```bash
+VITE_BASE_PATH=/smarttravel/ \\
+VITE_ROUTER_BASENAME=/smarttravel \\
+npm run build
+VITE_ALLOWED_HOSTS=your-device.your-tailnet.ts.net \\
+npm run preview -- --host 127.0.0.1 --port 4173
+```
+
+Replace the example hostname with your device's Tailscale DNS name. Configure Funnel to proxy `/smarttravel` to port `4173`.
 
 ## 14. Conclusion
 
