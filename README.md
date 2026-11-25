@@ -247,10 +247,10 @@ The Django backend must be running on `http://127.0.0.1:8000`. For a deployed ba
 To preview the production build through Tailscale Funnel at `/smarttravel/`, use that absolute base path so assets also load when a nested route is opened directly or refreshed:
 
 ```bash
-VITE_BASE_PATH=/smarttravel/ \\
-VITE_ROUTER_BASENAME=/smarttravel \\
+VITE_BASE_PATH=/smarttravel/ \
+VITE_ROUTER_BASENAME=/smarttravel \
 npm run build
-VITE_ALLOWED_HOSTS=your-device.your-tailnet.ts.net \\
+VITE_ALLOWED_HOSTS=your-device.your-tailnet.ts.net \
 npm run preview -- --host 127.0.0.1 --port 4173
 ```
 
